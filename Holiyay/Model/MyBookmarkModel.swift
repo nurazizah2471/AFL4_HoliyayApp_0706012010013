@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct MyBookmark {
-    static var destinations: [Destination] = []
+struct MyBookmarkModel {
+    static var destinations: [DestinationModel] = []
     
     static func setup() {
         if destinations.isEmpty {

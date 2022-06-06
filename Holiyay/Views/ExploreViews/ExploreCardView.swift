@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ExploreCardView: View {
-    @EnvironmentObject var destinationData: DestinationData
-    var destination: Destination
+    @EnvironmentObject var destinationDataMpdel: DestinationDataModel
+    var destinationModel: DestinationModel
     
     var body: some View {
         ZStack {
-            destination.thumbnail
+            destinationModel.thumbnail
                 .resizable()
             
-            DescriptionContent_ExploreCardView(destination: destination)
+            DescriptionContentShow_ExploreCardView(destinationModel: destinationModel)
         }
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.width*(36/100))
         .cornerRadius(10)
@@ -24,18 +24,18 @@ struct ExploreCardView: View {
     }
 }
 
-struct DescriptionContent_ExploreCardView: View{
-    var destination: Destination
+struct DescriptionContentShow_ExploreCardView: View{
+    var destinationModel: DestinationModel
     
     var body: some View{
         VStack {
             HStack{
                 VStack(alignment: .leading, spacing: 13.0){
                     Spacer()
-                    Text(destination.name)
+                    Text(destinationModel.name)
                         .font(.system(size: 18, weight: .heavy, design: .default))
                         .foregroundColor(.white)
-                    Label(destination.city + ", " + destination.country, systemImage: "pin.fill")
+                    Label(destinationModel.city + ", " + destinationModel.country, systemImage: "pin.fill")
                         .font(.system(size: 12, weight: .semibold, design: .default))
                         .lineLimit(1)
                     Label("Create a Plan", systemImage: "calendar")
@@ -61,10 +61,10 @@ struct DescriptionContent_ExploreCardView: View{
 }
 
 struct ExploreCardView_Previews: PreviewProvider {
-    static let destinationData = DestinationData()
+    static let destinationDataModel = DestinationDataModel()
     
     static var previews: some View {
-        ExploreCardView(destination: DestinationData().destinations[0])
-            .environmentObject(destinationData)
+        ExploreCardView(destinationModel: destinationDataModel.destinations[0])
+            .environmentObject(destinationDataModel)
     }
 }

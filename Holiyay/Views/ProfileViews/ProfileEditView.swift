@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ProfileEdit: View {
-    @Binding var profile: Profile
+struct ProfileEditView: View {
+    @Binding var profileModel: ProfileModel
     @State var selectedCountry = 0
     
     var body: some View {
@@ -22,7 +22,7 @@ struct ProfileEdit: View {
                     Spacer()
                 }
                 .padding(.bottom)
-                DescriptionContent_ProfileEdit(profile: $profile, selectedCountry: $selectedCountry)
+                DescriptionContentShow_ProfileEditView(profileModel: $profileModel, selectedCountry: $selectedCountry)
             }
         }
         .listStyle(.sidebar)
@@ -30,15 +30,15 @@ struct ProfileEdit: View {
     }
 }
 
-struct DescriptionContent_ProfileEdit: View{
-    @Binding var profile: Profile
+struct DescriptionContentShow_ProfileEditView: View{
+    @Binding var profileModel: ProfileModel
     @Binding var selectedCountry: Int
     
     var body: some View{
         VStack(alignment: .leading, spacing:15) {
             VStack(alignment: .leading, spacing: 10){
                 Text("First Name").fontWeight(.bold)
-                TextField("First Name", text: $profile.firstName)
+                TextField("First Name", text: $profileModel.firstName)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.name)
                     .overlay(
@@ -48,7 +48,7 @@ struct DescriptionContent_ProfileEdit: View{
             }
             VStack(alignment: .leading, spacing: 10){
                 Text("Last Name").bold()
-                TextField("Last Name", text: $profile.lastName)
+                TextField("Last Name", text: $profileModel.lastName)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.name)
                     .overlay(
@@ -63,23 +63,23 @@ struct DescriptionContent_ProfileEdit: View{
                     selection: $selectedCountry,
                     content: {
                         ForEach(
-                            0..<profile.countryOfDomicile.count,
+                            0..<profileModel.countryOfDomicile.count,
                             content: { index in
-                                Text(profile.countryOfDomicile[index])
+                                Text(profileModel.countryOfDomicile[index])
                             }
                         )
                     }
                 )
                     .onChange(of: selectedCountry) { _ in
-                        profile.selectedCountry = profile.countryOfDomicile[selectedCountry]
+                        profileModel.selectedCountry = profileModel.countryOfDomicile[selectedCountry]
                     }
                     .pickerStyle(.menu)
             }
             VStack(alignment: .leading, spacing: 10){
                 Text("Gender").bold()
                     .padding(.top, 20)
-                Picker("Gender", selection: $profile.gender) {
-                    ForEach(Profile.Gender.allCases) { gender in
+                Picker("Gender", selection: $profileModel.gender) {
+                    ForEach(ProfileModel.Gender.allCases) { gender in
                         Text(gender.rawValue).tag(gender)
                     }
                 }
@@ -88,7 +88,7 @@ struct DescriptionContent_ProfileEdit: View{
             VStack(alignment: .leading, spacing: 10){
                 Text("Age").bold()
                     .padding(.top, 15)
-                Picker("Your age", selection: $profile.age) {
+                Picker("Your age", selection: $profileModel.age) {
                     ForEach(1...100, id: \.self) { age in
                         Text("\(age)")
                     }
@@ -99,9 +99,9 @@ struct DescriptionContent_ProfileEdit: View{
     }
 }
 
-struct ProfileEdit_Previews: PreviewProvider {
+struct ProfileEditView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileEdit(profile: .constant(.default))
+        ProfileEditView(profileModel: .constant(.default))
     }
 }

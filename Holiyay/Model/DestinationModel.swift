@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-struct Destination: Hashable, Codable, Identifiable {
+struct DestinationModel: Hashable, Codable, Identifiable {
     var name: String
     var category: Category
     var city: String

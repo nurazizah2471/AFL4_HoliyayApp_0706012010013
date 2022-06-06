@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct ProfileResult: View {
-    @EnvironmentObject var destinationData: DestinationData
-    var profile: Profile
+struct ProfileResultView: View {
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
+    var profileModel: ProfileModel
     
     var body: some View {
         ScrollView {
             VStack {
                 (Text("Hello, ") +
-                 Text("\(profile.firstName) \(profile.lastName) \u{1F44B}"))
+                 Text("\(profileModel.firstName) \(profileModel.lastName) \u{1F44B}"))
                     .font(.system(size: 26))
                     .fontWeight(.black)
-                DescriptionContent_ProfileResult(profile: profile)
+                DescriptionContentShow_ProfileResultView(profileModel: profileModel)
             }
             .frame(maxHeight: .infinity)
         }
     }
 }
 
-struct DescriptionContent_ProfileResult: View{
-    var profile: Profile
+struct DescriptionContentShow_ProfileResultView: View{
+    var profileModel: ProfileModel
     
     var body: some View{
         VStack{
@@ -35,7 +35,7 @@ struct DescriptionContent_ProfileResult: View{
                 .font(.system(size: 96))
                 .foregroundColor(Color("Primary"))
                 .padding()
-            ProfileContent_ProfileResult(profile: profile)
+            ProfileContentShow_ProfileResultView(profileModel: profileModel)
         }
         .frame(width: UIScreen.main.bounds.width - 75)
         .padding()
@@ -45,8 +45,8 @@ struct DescriptionContent_ProfileResult: View{
     }
 }
 
-struct ProfileContent_ProfileResult: View {
-    var profile:Profile
+struct ProfileContentShow_ProfileResultView: View {
+    var profileModel:ProfileModel
     
     var body: some View{
         VStack{
@@ -56,7 +56,7 @@ struct ProfileContent_ProfileResult: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("First Name")
                             .bold()
-                        Text(profile.firstName)
+                        Text(profileModel.firstName)
                             .foregroundColor(Color("Muted"))
                     }
                     .padding(.top, UIScreen.main.bounds.width-340)
@@ -67,7 +67,7 @@ struct ProfileContent_ProfileResult: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("Last Name")
                             .bold()
-                        Text(profile.lastName)
+                        Text(profileModel.lastName)
                             .foregroundColor(Color("Muted"))
                     }
                     .padding(.top, UIScreen.main.bounds.width-340)
@@ -78,7 +78,7 @@ struct ProfileContent_ProfileResult: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("Country of Domicile")
                             .bold()
-                        Text(profile.selectedCountry)
+                        Text(profileModel.selectedCountry)
                             .foregroundColor(Color("Muted"))
                     }
                     .padding(.top, UIScreen.main.bounds.width-340)
@@ -89,7 +89,7 @@ struct ProfileContent_ProfileResult: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("Gender")
                             .bold()
-                        Text(profile.gender.rawValue)
+                        Text(profileModel.gender.rawValue)
                             .foregroundColor(Color("Muted"))
                     }
                     .padding(.top, UIScreen.main.bounds.width-340)
@@ -100,7 +100,7 @@ struct ProfileContent_ProfileResult: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("Age")
                             .bold()
-                        Text(profile.age.description)
+                        Text(profileModel.age.description)
                             .foregroundColor(Color("Muted"))
                     }
                     .padding(.top, UIScreen.main.bounds.width-340)
@@ -115,10 +115,10 @@ struct ProfileContent_ProfileResult: View {
     }
 }
 
-struct ProfileResult_Previews: PreviewProvider {
+struct ProfileResultView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileResult(profile: Profile.default)
-            .environmentObject(DestinationData())
+        ProfileResultView(profileModel: ProfileModel.default)
+            .environmentObject(DestinationDataModel())
     }
 }

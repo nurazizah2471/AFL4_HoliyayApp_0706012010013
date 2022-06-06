@@ -13,17 +13,17 @@
 		042019912832308E00A4A74F /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042019902832308E00A4A74F /* BookmarkView.swift */; };
 		042019932832309D00A4A74F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042019922832309D00A4A74F /* ProfileView.swift */; };
 		04516D58282252CB0092309D /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04516D57282252CB0092309D /* SplashScreenView.swift */; };
-		04516D5B28226DA70092309D /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04516D5A28226DA70092309D /* Destination.swift */; };
-		045E1A5F28354363007DE473 /* ProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E1A5E28354363007DE473 /* ProfileEdit.swift */; };
-		04C32DFA28378FE60073FEF9 /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C32DF928378FE60073FEF9 /* ProfileResult.swift */; };
+		04516D5B28226DA70092309D /* DestinationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04516D5A28226DA70092309D /* DestinationModel.swift */; };
+		045E1A5F28354363007DE473 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E1A5E28354363007DE473 /* ProfileEditView.swift */; };
+		04C32DFA28378FE60073FEF9 /* ProfileResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C32DF928378FE60073FEF9 /* ProfileResultView.swift */; };
 		04C95B02284A15D1009E4CBB /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95B01284A15D1009E4CBB /* BookmarkButton.swift */; };
-		04C95B04284A3562009E4CBB /* MyBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95B03284A3562009E4CBB /* MyBookmark.swift */; };
-		04E35CE4282BB93100EC3F12 /* DestinationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CE3282BB93100EC3F12 /* DestinationDetail.swift */; };
+		04C95B04284A3562009E4CBB /* MyBookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C95B03284A3562009E4CBB /* MyBookmarkModel.swift */; };
+		04E35CE4282BB93100EC3F12 /* DestinationDetailViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CE3282BB93100EC3F12 /* DestinationDetailViews.swift */; };
 		04E35CE9282BBE5300EC3F12 /* destinationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E35CE8282BBE5300EC3F12 /* destinationData.json */; };
 		04E35CEB282BBF4200EC3F12 /* DestinationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CEA282BBF4200EC3F12 /* DestinationData.swift */; };
-		04E35CED282BBFB800EC3F12 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CEC282BBFB800EC3F12 /* Profile.swift */; };
+		04E35CED282BBFB800EC3F12 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CEC282BBFB800EC3F12 /* ProfileModel.swift */; };
 		04E35CF0282BC06100EC3F12 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E35CEF282BC06100EC3F12 /* MapView.swift */; };
-		04EB2DFD2848ED4F00584163 /* ProfileHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB2DFC2848ED4F00584163 /* ProfileHost.swift */; };
+		04EB2DFD2848ED4F00584163 /* ProfileHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB2DFC2848ED4F00584163 /* ProfileHostView.swift */; };
 		04F6784C2817CBD40098D820 /* HoliyayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6784B2817CBD40098D820 /* HoliyayApp.swift */; };
 		04F6784E2817CBD40098D820 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6784D2817CBD40098D820 /* ContentView.swift */; };
 		04F678502817CBD50098D820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F6784F2817CBD50098D820 /* Assets.xcassets */; };
@@ -59,17 +59,17 @@
 		042019922832309D00A4A74F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		04417675281FCDAA0058F98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04516D57282252CB0092309D /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		04516D5A28226DA70092309D /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		045E1A5E28354363007DE473 /* ProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEdit.swift; sourceTree = "<group>"; };
-		04C32DF928378FE60073FEF9 /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
+		04516D5A28226DA70092309D /* DestinationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationModel.swift; sourceTree = "<group>"; };
+		045E1A5E28354363007DE473 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		04C32DF928378FE60073FEF9 /* ProfileResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResultView.swift; sourceTree = "<group>"; };
 		04C95B01284A15D1009E4CBB /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
-		04C95B03284A3562009E4CBB /* MyBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookmark.swift; sourceTree = "<group>"; };
-		04E35CE3282BB93100EC3F12 /* DestinationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetail.swift; sourceTree = "<group>"; };
+		04C95B03284A3562009E4CBB /* MyBookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookmarkModel.swift; sourceTree = "<group>"; };
+		04E35CE3282BB93100EC3F12 /* DestinationDetailViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailViews.swift; sourceTree = "<group>"; };
 		04E35CE8282BBE5300EC3F12 /* destinationData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = destinationData.json; sourceTree = "<group>"; };
 		04E35CEA282BBF4200EC3F12 /* DestinationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationData.swift; sourceTree = "<group>"; };
-		04E35CEC282BBFB800EC3F12 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		04E35CEC282BBFB800EC3F12 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		04E35CEF282BC06100EC3F12 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		04EB2DFC2848ED4F00584163 /* ProfileHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHost.swift; sourceTree = "<group>"; };
+		04EB2DFC2848ED4F00584163 /* ProfileHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHostView.swift; sourceTree = "<group>"; };
 		04F678482817CBD40098D820 /* Holiyay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holiyay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F6784B2817CBD40098D820 /* HoliyayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliyayApp.swift; sourceTree = "<group>"; };
 		04F6784D2817CBD40098D820 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,10 +111,10 @@
 		042DCEE9281EA6EC0078C139 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				04E35CDD282BB8EF00EC3F12 /* Destinations */,
-				04E35CD3282BB71E00EC3F12 /* Bookmark */,
-				04E35CD5282BB75B00EC3F12 /* Explore */,
-				04E35CD4282BB72500EC3F12 /* Profile */,
+				04E35CDD282BB8EF00EC3F12 /* DestinationViews */,
+				04E35CD3282BB71E00EC3F12 /* BookmarkViews */,
+				04E35CD5282BB75B00EC3F12 /* ExploreViews */,
+				04E35CD4282BB72500EC3F12 /* ProfileViews */,
 				04F6784D2817CBD40098D820 /* ContentView.swift */,
 				04516D57282252CB0092309D /* SplashScreenView.swift */,
 			);
@@ -124,49 +124,49 @@
 		04516D5928226D8C0092309D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04516D5A28226DA70092309D /* Destination.swift */,
+				04516D5A28226DA70092309D /* DestinationModel.swift */,
 				04E35CEA282BBF4200EC3F12 /* DestinationData.swift */,
-				04E35CEC282BBFB800EC3F12 /* Profile.swift */,
-				04C95B03284A3562009E4CBB /* MyBookmark.swift */,
+				04E35CEC282BBFB800EC3F12 /* ProfileModel.swift */,
+				04C95B03284A3562009E4CBB /* MyBookmarkModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		04E35CD3282BB71E00EC3F12 /* Bookmark */ = {
+		04E35CD3282BB71E00EC3F12 /* BookmarkViews */ = {
 			isa = PBXGroup;
 			children = (
 				040FC4D02836357000C51E58 /* BookmarkCardView.swift */,
 				042019902832308E00A4A74F /* BookmarkView.swift */,
 			);
-			path = Bookmark;
+			path = BookmarkViews;
 			sourceTree = "<group>";
 		};
-		04E35CD4282BB72500EC3F12 /* Profile */ = {
+		04E35CD4282BB72500EC3F12 /* ProfileViews */ = {
 			isa = PBXGroup;
 			children = (
-				045E1A5E28354363007DE473 /* ProfileEdit.swift */,
+				045E1A5E28354363007DE473 /* ProfileEditView.swift */,
 				042019922832309D00A4A74F /* ProfileView.swift */,
-				04C32DF928378FE60073FEF9 /* ProfileResult.swift */,
-				04EB2DFC2848ED4F00584163 /* ProfileHost.swift */,
+				04C32DF928378FE60073FEF9 /* ProfileResultView.swift */,
+				04EB2DFC2848ED4F00584163 /* ProfileHostView.swift */,
 			);
-			path = Profile;
+			path = ProfileViews;
 			sourceTree = "<group>";
 		};
-		04E35CD5282BB75B00EC3F12 /* Explore */ = {
+		04E35CD5282BB75B00EC3F12 /* ExploreViews */ = {
 			isa = PBXGroup;
 			children = (
 				040FC4D22836359500C51E58 /* ExploreCardView.swift */,
 				0420198E2832306200A4A74F /* ExploreView.swift */,
 			);
-			path = Explore;
+			path = ExploreViews;
 			sourceTree = "<group>";
 		};
-		04E35CDD282BB8EF00EC3F12 /* Destinations */ = {
+		04E35CDD282BB8EF00EC3F12 /* DestinationViews */ = {
 			isa = PBXGroup;
 			children = (
-				04E35CE3282BB93100EC3F12 /* DestinationDetail.swift */,
+				04E35CE3282BB93100EC3F12 /* DestinationDetailViews.swift */,
 			);
-			path = Destinations;
+			path = DestinationViews;
 			sourceTree = "<group>";
 		};
 		04E35CE5282BBDA300EC3F12 /* Resources */ = {
@@ -382,21 +382,21 @@
 				0420198F2832306200A4A74F /* ExploreView.swift in Sources */,
 				042019932832309D00A4A74F /* ProfileView.swift in Sources */,
 				04516D58282252CB0092309D /* SplashScreenView.swift in Sources */,
-				04E35CED282BBFB800EC3F12 /* Profile.swift in Sources */,
+				04E35CED282BBFB800EC3F12 /* ProfileModel.swift in Sources */,
 				04F6784E2817CBD40098D820 /* ContentView.swift in Sources */,
 				04E35CF0282BC06100EC3F12 /* MapView.swift in Sources */,
-				04516D5B28226DA70092309D /* Destination.swift in Sources */,
+				04516D5B28226DA70092309D /* DestinationModel.swift in Sources */,
 				040FC4D12836357000C51E58 /* BookmarkCardView.swift in Sources */,
 				042019912832308E00A4A74F /* BookmarkView.swift in Sources */,
 				04F6784C2817CBD40098D820 /* HoliyayApp.swift in Sources */,
 				040FC4D32836359500C51E58 /* ExploreCardView.swift in Sources */,
 				2A7AC201284C8D5700BA6715 /* CalendarView.swift in Sources */,
-				04C32DFA28378FE60073FEF9 /* ProfileResult.swift in Sources */,
+				04C32DFA28378FE60073FEF9 /* ProfileResultView.swift in Sources */,
 				04E35CEB282BBF4200EC3F12 /* DestinationData.swift in Sources */,
-				04EB2DFD2848ED4F00584163 /* ProfileHost.swift in Sources */,
-				04C95B04284A3562009E4CBB /* MyBookmark.swift in Sources */,
-				045E1A5F28354363007DE473 /* ProfileEdit.swift in Sources */,
-				04E35CE4282BB93100EC3F12 /* DestinationDetail.swift in Sources */,
+				04EB2DFD2848ED4F00584163 /* ProfileHostView.swift in Sources */,
+				04C95B04284A3562009E4CBB /* MyBookmarkModel.swift in Sources */,
+				045E1A5F28354363007DE473 /* ProfileEditView.swift in Sources */,
+				04E35CE4282BB93100EC3F12 /* DestinationDetailViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

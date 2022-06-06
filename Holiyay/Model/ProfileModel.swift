@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Profile {
+struct ProfileModel {
     var firstName: String
     var lastName: String
     var selectedCountry: String
     var gender = Gender.female
     var age: Int
     
-    static let `default` = Profile(firstName: "Nur", lastName: "Azizah", selectedCountry: "Afghanistan", age: 19)
+    static let `default` = ProfileModel(firstName: "Nur", lastName: "Azizah", selectedCountry: "Afghanistan", age: 19)
     
     enum Gender: String, CaseIterable, Identifiable {
         case male = "Male"

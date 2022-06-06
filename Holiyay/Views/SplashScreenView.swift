@@ -21,7 +21,7 @@ struct SplashScreenView: View {
     }
 }
 
-struct LogoShow: View{
+struct LogoShow_SplashScreenView: View{
     
     var body: some View{
         Spacer()
@@ -46,7 +46,7 @@ struct SplashScreenShow: View{
     
     var body: some View{
         VStack {
-            LogoShow()
+            LogoShow_SplashScreenView()
             VStack {
                 Text("&copy; 2022 Archotech")
                     .fontWeight(.bold)

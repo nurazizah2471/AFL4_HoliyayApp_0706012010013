@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var destinationData: DestinationData
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
     @State private var showingProfile = false
     
     var body: some View {
         NavigationView {
             VStack {
-                ProfileResult(profile: destinationData.profile)
+                ProfileResultView(profileModel: destinationDataModel.profile)
             }
             .padding(.top, -40)
             .toolbar {
@@ -25,8 +25,8 @@ struct ProfileView: View {
                 }
             }
             .sheet(isPresented: $showingProfile) {
-                ProfileHost()
-                    .environmentObject(destinationData)
+                ProfileHostView()
+                    .environmentObject(destinationDataModel)
             }
         }
     }
@@ -36,6 +36,6 @@ struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
         ProfileView()
-            .environmentObject(DestinationData())
+            .environmentObject(DestinationDataModel())
     }
 }

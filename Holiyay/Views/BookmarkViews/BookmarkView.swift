@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct BookmarkView: View {
-    @EnvironmentObject var destinationData: DestinationData
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
     @State var filter = FilterCategory.all
-    @State var selectedDestination: Destination?
+    @State var selectedDestinationModel: DestinationModel?
     @State var showingAlert = false
     
     
@@ -24,8 +24,8 @@ struct BookmarkView: View {
         var id: FilterCategory { self }
     }
     
-    var filteredDestinations: [Destination] {
-        destinationData.destinations.filter { destination in
+    var filteredDestinations: [DestinationModel] {
+        destinationDataModel.destinations.filter { destination in
             (destination.isBookmark)
             && (filter == .all || filter.rawValue == destination.category.rawValue)
         }
@@ -34,7 +34,7 @@ struct BookmarkView: View {
     func BookmarkCount()->Int{
         var tmp = 0
         
-        for val in destinationData.destinations{
+        for val in destinationDataModel.destinations{
             if(val.isBookmark){
                 tmp = tmp + 1
             }
@@ -46,16 +46,16 @@ struct BookmarkView: View {
         if(BookmarkCount() > 0){
             NavigationView {
                 ScrollView {
-                    HeaderContent_BookmarkView()
+                    HeaderContentShow_BookmarkView()
                     VStack(alignment: .center, spacing: 30) {
                         if(filteredDestinations.count == 0){
-                            DescriptionNullData_BookmarkView(description: "You Have Not a Plan in this Category Destination. Create Your Plan Now!")
+                            DescriptionNullDataShow_BookmarkView(description: "You Have Not a Plan in this Category Destination. Create Your Plan Now!")
                         } else{
                             ForEach(filteredDestinations) { destination in
                                 NavigationLink {
-                                    DestinationDetail(destination: destination)
+                                    DestinationDetailView(destinationModel: destination)
                                 } label: {
-                                    BookmarkCardView(destination: destination)
+                                    BookmarkCardView(destinationModel: destination)
                                 }
                                 .tag(destination)
                             }
@@ -65,7 +65,7 @@ struct BookmarkView: View {
                 .padding(.bottom)
                 .frame(maxHeight: .infinity)
                 .onAppear {
-                    destinationData.destinations = getDestinations()
+                    destinationDataModel.destinations = getDestinations()
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -95,14 +95,14 @@ struct BookmarkView: View {
             }
         } else {
             VStack{
-                HeaderContent_BookmarkView()
-                DescriptionNullData_BookmarkView(description: "You Have Not a Plan. Create Your Plan Now!")
+                HeaderContentShow_BookmarkView()
+                DescriptionNullDataShow_BookmarkView(description: "You Have Not a Plan. Create Your Plan Now!")
             }
         }
     }
 }
 
-struct DescriptionNullData_BookmarkView: View{
+struct DescriptionNullDataShow_BookmarkView: View{
     var description: String
     
     var body: some View{
@@ -122,7 +122,7 @@ struct DescriptionNullData_BookmarkView: View{
     }
 }
 
-struct HeaderContent_BookmarkView: View{
+struct HeaderContentShow_BookmarkView: View{
     
     var body: some View{
         Text("Realize your plan")
@@ -135,6 +135,6 @@ struct HeaderContent_BookmarkView: View{
 struct BookmarkView_Previews: PreviewProvider {
     
     static var previews: some View {
-        BookmarkView().environmentObject(DestinationData())
+        BookmarkView().environmentObject(DestinationDataModel())
     }
 }

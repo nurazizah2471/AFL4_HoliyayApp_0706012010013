@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-class DestinationData: ObservableObject {
-    @Published var destinations: [Destination] = getDestinations()
-    @Published var profile = Profile.default
+class DestinationDataModel: ObservableObject {
+    @Published var destinations: [DestinationModel] = getDestinations()
+    @Published var profile = ProfileModel.default
     
-    var categories: [String: [Destination]] {
+    var categories: [String: [DestinationModel]] {
         Dictionary(
             grouping: destinations,
             by: { $0.category.rawValue }
@@ -20,14 +20,14 @@ class DestinationData: ObservableObject {
     }
 }
 
-func getDestinations() -> [Destination] {
-    if MyBookmark.destinations.isEmpty {
+func getDestinations() -> [DestinationModel] {
+    if MyBookmarkModel.destinations.isEmpty {
         return load("destinationData.json")
     }
-    return MyBookmark.destinations
+    return MyBookmarkModel.destinations
 }
 
-func load(_ filename: String) -> [Destination] {
+func load(_ filename: String) -> [DestinationModel] {
     let data: Data
     
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
@@ -43,7 +43,7 @@ func load(_ filename: String) -> [Destination] {
     
     do {
         let decoder = JSONDecoder()
-        return try decoder.decode([Destination].self, from: data)
+        return try decoder.decode([DestinationModel].self, from: data)
     } catch {
         fatalError("Couldn't parse \(filename) as :\n\(error)")
     }

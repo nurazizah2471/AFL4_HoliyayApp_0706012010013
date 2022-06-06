@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct ProfileHost: View {
+struct ProfileHostView: View {
     @Environment(\.editMode) var editMode
-    @EnvironmentObject var destinationData: DestinationData
-    @State var draftProfile = Profile.default
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
+    @State var draftProfile = ProfileModel.default
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Toolbar_ProfileHost(draftProfile: $draftProfile, destinationData: destinationData)
+            ToolbarShow_ProfileHostView(draftProfile: $draftProfile, destinationDataModel: destinationDataModel)
             if editMode?.wrappedValue == .inactive {
-                ProfileResult(profile: destinationData.profile)
+                ProfileResultView(profileModel: destinationDataModel.profile)
             } else {
-                ProfileEdit(profile: $draftProfile)
+                ProfileEditView(profileModel: $draftProfile)
                     .onAppear {
-                        draftProfile = destinationData.profile
+                        draftProfile = destinationDataModel.profile
                     }
                     .onDisappear {
-                        destinationData.profile = draftProfile
+                        destinationDataModel.profile = draftProfile
                     }
             }
         }
@@ -31,16 +31,16 @@ struct ProfileHost: View {
     }
 }
 
-struct Toolbar_ProfileHost: View{
+struct ToolbarShow_ProfileHostView: View{
     @Environment(\.editMode) var editMode
-    @Binding var draftProfile: Profile
-    var destinationData: DestinationData
+    @Binding var draftProfile: ProfileModel
+    var destinationDataModel: DestinationDataModel
     
     var body: some View{
         HStack {
             if editMode?.wrappedValue == .active {
                 Button("Cancel", role: .cancel) {
-                    draftProfile = destinationData.profile
+                    draftProfile = destinationDataModel.profile
                     editMode?.animation().wrappedValue = .inactive
                 }
             }
@@ -50,10 +50,10 @@ struct Toolbar_ProfileHost: View{
     }
 }
 
-struct ProfileHost_Previews: PreviewProvider {
+struct ProfileHostView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileHost()
-            .environmentObject(DestinationData())
+        ProfileHostView()
+            .environmentObject(DestinationDataModel())
     }
 }

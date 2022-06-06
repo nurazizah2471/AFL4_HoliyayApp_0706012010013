@@ -37,10 +37,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.dark)
-            .environmentObject(DestinationData())
+            .environmentObject(DestinationDataModel())
         ContentView()
             .preferredColorScheme(.light)
-            .environmentObject(DestinationData())
+            .environmentObject(DestinationDataModel())
     }
 }
 

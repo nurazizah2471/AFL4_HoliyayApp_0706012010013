@@ -8,52 +8,55 @@
 import Foundation
 import SwiftUI
 
-struct DestinationDetail: View {
-    var destination: Destination
+struct DestinationDetailView: View {
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
+    var destinationModel: DestinationModel
     
     var body: some View {
         VStack{
-            contentShow(destination: destination)
+            ContentShow_DestinationDetailView(destinationModel: destinationModel, destinationDataModel: destinationDataModel)
         }
     }
 }
 
-struct contentShow: View{
-    var destination: Destination
+struct ContentShow_DestinationDetailView: View{
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
     
     var body: some View{
         VStack{
             ScrollView {
-                MapShow(destination: destination)
-                IndicatorDescriptionShow(destination: destination)
+                MapShow_DestinationDetailView(destinationModel: destinationModel, destinationDataModel: destinationDataModel)
+                IndicatorDescriptionShow_DestinationDetailView(destinationModel: destinationModel, destinationDataModel: destinationDataModel)
             }
-            .navigationTitle(destination.name)
+            .navigationTitle(destinationModel.name)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-struct MapShow: View{
-    @EnvironmentObject var destinationData: DestinationData
-    var destination: Destination
+struct MapShow_DestinationDetailView: View{
     
-    var destinationIndex: Int {
-        destinationData.destinations.firstIndex(where: { $0.id == destination.id }) ?? 0
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
+    
+    var destinationModelIndex: Int {
+        destinationDataModel.destinations.firstIndex(where: { $0.id == destinationModel.id }) ?? 0
     }
     
     var body: some View{
         VStack{
-            MapView(coordinate: destination.locationCoordinate)
+            MapView(coordinate: destinationModel.locationCoordinate)
                 .ignoresSafeArea(edges: .top)
                 .frame(height: 256)
             HStack{
                 VStack(alignment: .leading){
                     HStack{
-                        Text(destination.name)
+                        Text(destinationModel.name)
                             .font(.title)
                             .fontWeight(.heavy)
                     }
-                    IndicatorDestinationShow(destination: destination)
+                    IndicatorDestinationShow_DestinationDetailView(destinationModel: destinationModel)
                 }
                 Spacer()
             }
@@ -62,34 +65,34 @@ struct MapShow: View{
     }
 }
 
-struct IndicatorDestinationShow: View{
-    var destination: Destination
+struct IndicatorDestinationShow_DestinationDetailView: View{
+    var destinationModel: DestinationModel
     
     var body: some View{
         VStack{
             HStack(spacing: 18) {
-                Text(destination.category.rawValue)
+                Text(destinationModel.category.rawValue)
                     .padding(10)
                     .background(Capsule().stroke(lineWidth: 3))
                     .font(.system(size: 17, weight: .semibold, design: .default))
-                Label(destination.city + ", " + destination.country, systemImage: "pin.fill")
+                Label(destinationModel.city + ", " + destinationModel.country, systemImage: "pin.fill")
                     .font(.system(size: 17, weight: .medium, design: .default))
-                
             }
             .font(.subheadline)
         }
     }
 }
 
-struct IndicatorDescriptionShow: View{
-    @EnvironmentObject var destinationData: DestinationData
+struct IndicatorDescriptionShow_DestinationDetailView: View{
+    
     @State private var isPresented = false
-    var destination: Destination
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
     
     func CheckAvailable()->Int{
         var tmp = 0
         
-        for val in destinationData.destinations{
+        for val in destinationDataModel.destinations{
             if(!val.isBookmark){
                 tmp = tmp + 1
             }
@@ -99,13 +102,13 @@ struct IndicatorDescriptionShow: View{
     
     var body: some View{
         VStack(alignment: .leading){
-            Text(destination.description)
+            Text(destinationModel.description)
                 .padding(.bottom)
             HStack{
                 Text("Will be visited on:")
                 
-                if(destination.plandate != "0"){
-                    Text("\(destination.plandate)")
+                if(destinationModel.isBookmark){
+                    Text("\(destinationModel.plandate)")
                         .fontWeight(.heavy)
                 } else {
                     Text("-")
@@ -113,11 +116,11 @@ struct IndicatorDescriptionShow: View{
             }
             .padding(.bottom)
             
-            if((!destination.isBookmark && CheckAvailable() > 1) || destination.isBookmark){
+            if((!destinationModel.isBookmark && CheckAvailable() > 1) || destinationModel.isBookmark){
                 Button {
                     isPresented.toggle()
                 } label: {
-                    if(destination.isBookmark){
+                    if(destinationModel.isBookmark){
                         Label("Edit My Visit Date", systemImage: "calendar")
                             .frame(maxWidth: .infinity)
                     } else {
@@ -127,7 +130,7 @@ struct IndicatorDescriptionShow: View{
                 }
                 .buttonStyle(PrimaryButton())
                 .fullScreenCover(isPresented: $isPresented) {
-                    FullScreenModalView(destination: self.destination)
+                    FullScreenModalShow_DestinationDetailView(destinationModel: self.destinationModel, destinationDataModel: self.destinationDataModel)
                 }
             } else{
                 VStack{
@@ -149,18 +152,19 @@ struct IndicatorDescriptionShow: View{
     }
 }
 
-struct FullScreenModalView: View {
-    var destination: Destination
+struct FullScreenModalShow_DestinationDetailView: View {
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
     
     var body: some View {
         VStack{
-            BarContent_DestinationDetail()
-            ScrollViewContent_DestinationDetail(destination: destination)
+            BarContentShow_DestinationDetailView()
+            ScrollViewContentShow_DestinationDetailView(destinationModel: destinationModel, destinationDataModel: destinationDataModel)
         }
     }
 }
 
-struct BarContent_DestinationDetail: View{
+struct BarContentShow_DestinationDetailView: View{
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View{
@@ -176,20 +180,21 @@ struct BarContent_DestinationDetail: View{
     }
 }
 
-struct ScrollViewContent_DestinationDetail: View{
-    var destination: Destination
+struct ScrollViewContentShow_DestinationDetailView: View{
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
     
     var body: some View{
         VStack {
             ScrollView{
-                UpContent_FullScreenModalView()
-                MainContent_FullScreenModalView(destination: destination)
+                UpContentShow_FullScreenModalShow_DestinationDetailView()
+                MainContentShow_FullScreenModalShow_DestinationDetailView(destinationModel: destinationModel, destinationDataModel: destinationDataModel)
             }
         }
     }
 }
 
-struct UpContent_FullScreenModalView: View{
+struct  UpContentShow_FullScreenModalShow_DestinationDetailView: View{
     
     var body: some View{
         VStack{
@@ -206,14 +211,14 @@ struct UpContent_FullScreenModalView: View{
     }
 }
 
-struct MainContent_FullScreenModalView: View{
-    @EnvironmentObject var destinationData: DestinationData
+struct MainContentShow_FullScreenModalShow_DestinationDetailView: View{
     @Environment(\.presentationMode) var presentationMode
-    var destination: Destination
     @State var visitDate = Date()
+    var destinationModel: DestinationModel
+    var destinationDataModel: DestinationDataModel
     
     var destinationIndex: Int {
-        destinationData.destinations.firstIndex(where: { $0.id == destination.id })!
+        destinationDataModel.destinations.firstIndex(where: { $0.id == destinationModel.id })!
     }
     
     func dateFormat() -> String {
@@ -231,11 +236,11 @@ struct MainContent_FullScreenModalView: View{
             Button {
                 presentationMode.wrappedValue.dismiss()
                 
-                MyBookmark.setup()
-                MyBookmark.destinations[destinationIndex].isBookmark = true
-                MyBookmark.destinations[destinationIndex].plandate = dateFormat()
+                MyBookmarkModel.setup()
+                MyBookmarkModel.destinations[destinationIndex].isBookmark = true
+                MyBookmarkModel.destinations[destinationIndex].plandate = dateFormat()
             } label: {
-                if(destination.plandate != "0"){
+                if(destinationModel.isBookmark){
                     Label("Edit My Plan", systemImage: "pencil")
                         .frame(maxWidth: .infinity)
                 } else {
@@ -250,11 +255,11 @@ struct MainContent_FullScreenModalView: View{
     }
 }
 
-struct DestinationDetail_Previews: PreviewProvider {
-    static let destinationData = DestinationData()
+struct DestinationDetailView_Previews: PreviewProvider {
+    static let destinationDataModel = DestinationDataModel()
     
     static var previews: some View {
-        DestinationDetail(destination: DestinationData().destinations[0])
-            .environmentObject(destinationData)
+        DestinationDetailView(destinationModel: destinationDataModel.destinations[0])
+            .environmentObject(destinationDataModel)
     }
 }

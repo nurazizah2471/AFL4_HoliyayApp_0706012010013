@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct HoliyayApp: App {
-    @StateObject private var destinationData = DestinationData()
+    @StateObject private var destinationDataModel = DestinationDataModel()
     
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
-                .environmentObject(destinationData)
+                .environmentObject(destinationDataModel)
         }
     }
 }

@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @EnvironmentObject var destinationData: DestinationData
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
     @State private var topExpanded: Bool = true
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Carousel()
-                    Content_ExploreView(topExpanded: $topExpanded)
+                    CarouselShow_ExploreView()
+                    ContentShow_ExploreView(topExpanded: $topExpanded)
                 }
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
                 .onAppear {
-                    destinationData.destinations = getDestinations()
+                    destinationDataModel.destinations = getDestinations()
                 }
             }
         }
     }
 }
 
-struct Carousel: View {
+struct CarouselShow_ExploreView: View {
     
     var body: some View {
         TabView {
@@ -36,28 +36,28 @@ struct Carousel: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width*(30/100), height: UIScreen.main.bounds.height*(40/100))
-                .overlay(OverlayHelper(description: "Beach"), alignment: .bottom)
+                .overlay(OverlayHelper_ExploreView(description: "Beach"), alignment: .bottom)
                 .padding(.bottom, 20)
                 .foregroundColor(.cyan)
             Image("desert_carousel")
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width*(30/100), height: UIScreen.main.bounds.height*(40/100))
-                .overlay(OverlayHelper(description: "Beach"), alignment: .bottom)
+                .overlay(OverlayHelper_ExploreView(description: "Beach"), alignment: .bottom)
                 .padding(.bottom, 20)
                 .foregroundColor(.cyan)
             Image("forest_carousel")
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width*(30/100), height: UIScreen.main.bounds.height*(40/100))
-                .overlay(OverlayHelper(description: "Beach"), alignment: .bottom)
+                .overlay(OverlayHelper_ExploreView(description: "Beach"), alignment: .bottom)
                 .padding(.bottom, 20)
                 .foregroundColor(.cyan)
             Image("mountain_carousel")
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width*(30/100), height: UIScreen.main.bounds.height*(40/100))
-                .overlay(OverlayHelper(description: "Beach"), alignment: .bottom)
+                .overlay(OverlayHelper_ExploreView(description: "Beach"), alignment: .bottom)
                 .padding(.bottom, 20)
                 .foregroundColor(.cyan)
         }
@@ -68,9 +68,9 @@ struct Carousel: View {
     }
 }
 
-struct Content_ExploreView: View{
+struct ContentShow_ExploreView: View{
     @Binding var topExpanded: Bool
-    @EnvironmentObject var destinationData: DestinationData
+    @EnvironmentObject var destinationDataModel: DestinationDataModel
     
     var body: some View{
         VStack(alignment: .leading) {
@@ -79,10 +79,10 @@ struct Content_ExploreView: View{
                 .fontWeight(.black)
                 .padding(.vertical)
             ScrollView {
-                DisclosureGroupHelper(topExpanded: $topExpanded, CategoryName: "Beaches",  destinationData: destinationData)
-                DisclosureGroupHelper(topExpanded: $topExpanded, CategoryName: "Deserts",  destinationData: destinationData)
-                DisclosureGroupHelper(topExpanded: $topExpanded, CategoryName: "Forests",  destinationData: destinationData)
-                DisclosureGroupHelper(topExpanded: $topExpanded, CategoryName: "Mountains",  destinationData: destinationData)
+                DisclosureGroupHelper_ExploreView(topExpanded: $topExpanded, categoryName: "Beaches",  destinationDataModel: destinationDataModel)
+                DisclosureGroupHelper_ExploreView(topExpanded: $topExpanded, categoryName: "Deserts",  destinationDataModel: destinationDataModel)
+                DisclosureGroupHelper_ExploreView(topExpanded: $topExpanded, categoryName: "Forests",  destinationDataModel: destinationDataModel)
+                DisclosureGroupHelper_ExploreView(topExpanded: $topExpanded, categoryName: "Mountains",  destinationDataModel: destinationDataModel)
             }
         }
         .padding(.horizontal)
@@ -91,22 +91,22 @@ struct Content_ExploreView: View{
     }
 }
 
-struct DisclosureGroupHelper: View{
+struct DisclosureGroupHelper_ExploreView: View{
     @Binding var topExpanded:Bool
-    var CategoryName: String
-    var destinationData: DestinationData
+    var categoryName: String
+    var destinationDataModel: DestinationDataModel
     
     var body: some View{
-        DisclosureGroup(CategoryName, isExpanded: $topExpanded) {
+        DisclosureGroup(categoryName, isExpanded: $topExpanded) {
             Text("")
                 .padding(.top, -5)
-            ForEach(destinationData.destinations) { destination in
-                if (!destination.isBookmark)
-                    && destination.category.rawValue == "Beaches" {
+            ForEach(destinationDataModel.destinations) { destination in
+                if !destination.isBookmark
+                    && destination.category.rawValue == categoryName {
                     NavigationLink {
-                        DestinationDetail(destination: destination)
+                        DestinationDetailView(destinationModel: destination)
                     } label: {
-                        ExploreCardView(destination: destination)
+                        
                     }
                     .tag(destination)
                 }
@@ -115,7 +115,7 @@ struct DisclosureGroupHelper: View{
     }
 }
 
-struct OverlayHelper: View {
+struct OverlayHelper_ExploreView: View {
     var description: String
     
     var body: some View {
@@ -127,6 +127,6 @@ struct OverlayHelper: View {
 struct ExploreView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ExploreView().environmentObject(DestinationData())
+        ExploreView().environmentObject(DestinationDataModel())
     }
 }
